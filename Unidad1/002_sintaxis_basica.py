@@ -15,3 +15,21 @@ if imprimir:
     print(x, d)
 
 # Salida: El valor de (a+b)*c es 14
+
+# Esto es un comentario
+
+'''
+Esto es un comentario
+de varias líneas
+de código
+'''
+
+if True:
+    print("True")
+
+    
+y = 10
+x = 5
+
+x = 5; y = 10
+
