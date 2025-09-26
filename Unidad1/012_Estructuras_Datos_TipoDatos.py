@@ -204,3 +204,82 @@ for fecha in lista_ordenada:
 
 
 #8 Cálculo de potencia por habitación-------------------------------------------------------------------------
+
+habitaciones = {}
+
+habitacion = "Sala"
+dispositivos_sala = [100, 60, 500, 200]  
+habitaciones[habitacion] = dispositivos_sala
+
+habitacion = "Cocina" 
+dispositivos_cocina = [800, 1200, 150]
+habitaciones[habitacion] = dispositivos_cocina
+
+print("Potencias por habitación:")
+for habitacion, potencias in habitaciones.items():
+    total = sum(potencias)
+    print(f"{habitacion}: {total}W")
+    
+    if total > 1500:
+        print("  ALERTA Potencia muy alta")
+
+total_casa = sum(sum(potencias) for potencias in habitaciones.values())
+print(f"Potencia total de la casa: {total_casa}W")
+
+#9 Alarmas por fuga eléctrica--------------------------------------------------------------------------------
+fugas = {}
+
+print("Registro de fugas eléctricas por fecha")
+
+fecha1 = "15/05/2024"
+fecha2 = "16/05/2024"
+fecha3 = "15/05/2024"  
+
+for fecha in [fecha1, fecha2, fecha3]:
+    if fecha in fugas:
+        fugas[fecha] += 1
+    else:
+        fugas[fecha] = 1
+
+print("Todas las fugas:", fugas)
+
+print("Días con más de una fuga:")
+for fecha, cantidad in fugas.items():
+    if cantidad > 1:
+        print(f"{fecha}: {cantidad} fugas")
+
+
+#10 Distribución de carga en fases-------------------------------------------------------------------
+
+
+fase_a = []
+fase_b = [] 
+fase_c = []
+
+
+cargas = [10, 15, 20, 25, 30, 5]
+
+for carga in cargas:
+    total_a = sum(fase_a)
+    total_b = sum(fase_b)
+    total_c = sum(fase_c)
+    
+    menor = min(total_a, total_b, total_c)
+    
+    if menor == total_a:
+        fase_a.append(carga)
+        print(f"Carga {carga}A - Fase A")
+    elif menor == total_b:
+        fase_b.append(carga)
+        print(f"Carga {carga}A - Fase B")
+    else:
+        fase_c.append(carga)
+        print(f"Carga {carga}A - Fase C")
+
+print(f"Fase A: {sum(fase_a)}A - {fase_a}")
+print(f"Fase B: {sum(fase_b)}A - {fase_b}")
+print(f"Fase C: {sum(fase_c)}A - {fase_c}")
+
+promedio = (sum(fase_a) + sum(fase_b) + sum(fase_c)) / 3
+if sum(fase_a) > promedio * 1.2:
+    print("Fase A sobrecargada")
