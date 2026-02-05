@@ -116,3 +116,7 @@ label = tk.Label(root, text="Presione consultar")
 label.pack()
 
 root.mainloop()
+
+
+
+
